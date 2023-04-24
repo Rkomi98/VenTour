@@ -1,0 +1,3 @@
+app: {
+  baseURL: "https://github.com/Rkomi98/VenTour"
+}
