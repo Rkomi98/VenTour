@@ -1,1 +1,0 @@
-import e from"./Carousel.36d661e4.js";import{_ as t,r,c as s,o as n}from"./entry.9d6d160c.js";import"./left-arrows.f624117c.js";import"./right-arrows.e719739f.js";const _={name:"History",components:{Carousel:e}};function c(a,p,i,m,l,u){const o=r("Carousel");return n(),s(o)}const C=t(_,[["render",c]]);export{C as default};
