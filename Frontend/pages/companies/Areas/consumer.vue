@@ -81,6 +81,8 @@
                 <p>HAPPY INVESTORS:</p>
             </div>
         </div>
+        <div v-if="!isMobile">
+            <desktop>
         <div id="flex-container" class="testimonials">
             <div id="left-zone">
                 <ul class="list">
@@ -143,6 +145,78 @@
             </div>
             <div id="right-zone"></div>
         </div>
+    </desktop>
+</div>
+
+
+        <div v-else>
+            <mobile>
+
+                <div id="flex-container2" class="testimonials">
+            <div id="left-zone2">
+                <ul class="list2">
+                    <li class="item2">
+                        <input type="radio" id="radio_testimonial2-1" name="basic_carousel" checked="checked" />
+                        <label class="label_testimonialM2-1" for="radio_testimonial2-1">Nestlè</label>
+                        <div class="content-test content_testimonial2-1">
+                            <span class="picto"></span>
+
+                            <p>"I've been investing with VenTour for a few years now and I couldn't be happier with their
+                                work in the consumer goods sector. Their expertise and guidance have helped our portfolio of
+                                companies grow tremendously."</p>
+                            <p class="testimonialFrom">Mark Schneider, Chief Executive Officer</p>
+                            <p class="testimonialState">Vevey, Switzerland</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <input type="radio" id="radio_testimonial2-2" name="basic_carousel" />
+                        <label class="label_testimonial2-2" for="radio_testimonial2-2">Unilever</label>
+                        <div class="content-test content_testimonial2-2">
+                            <span class="picto"></span>
+
+                            <p>"As an investor, it's always reassuring to see the companies you've invested in succeed.
+                                VenTour's strategic investments in the consumer goods sector have consistently led to
+                                impressive results, and I'm proud to be a part of it."</p>
+                            <p class="testimonialFrom">Alan Jope, CEO</p>
+                            <p class="testimonialState">London, UK</p>
+                            <br>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <input type="radio" id="radio_testimonial2-3" name="basic_carousel" />
+                        <label class="label_testimonial2-3" for="radio_testimonial2-3">NIKE</label>
+                        <div class="content-test content_testimonial2-3">
+                            <span class="picto"></span>
+
+                            <p>"I've invested in several venture capital firms over the years, but VenTour stands out in
+                                their commitment to their portfolio companies in the consumer goods industry. Their team's
+                                dedication and support have helped take our investments to the next level."</p>
+                            <p class="testimonialFrom">John Donahoe, President</p>
+                            <p class="testimonialState">Oregon, USA</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <input type="radio" id="radio_testimonial2-4" name="basic_carousel" />
+                        <label class="label_testimonial2-4" for="radio_testimonial2-4">Kraft Heinz</label>
+                        <div class="content-test content_testimonial2-4">
+                            <span class="picto"></span>
+
+                            <p>"VenTour's approach to investing in the consumer goods sector is truly unique. Their focus on
+                                sustainability and ethical practices in their portfolio companies has not only yielded great
+                                returns but has also made a positive impact on our environment and society. I'm proud to be
+                                a part of their mission."</p>
+                            <p class="testimonialFrom">Miguel Patricio, Chief Executive</p>
+                            <p class="testimonialState"> Illinois, USA</p>
+                            <br>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="right-zone"></div>
+        </div>
+
+            </mobile>
+        </div>
     </main>
 </template>
         
@@ -155,8 +229,24 @@ export default {
     data() {
         return {
             activeSection: 1,
+            isMobile: false,
         };
     },
+    methods:{
+        detectMobile() {
+              return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+              );
+            },
+    },
+    mounted() {
+        this.isMobile = this.detectMobile();
+        document.addEventListener("click", (event) => {
+            if (!event.target.closest(".search")) {
+                this.isSearchExpanded = false;
+            }
+        });
+    }
 };
 
 const testimonial2Items = document.querySelectorAll('.item label');
@@ -452,6 +542,12 @@ hr {
     flex-direction: column;
     position: relative;
 }
+#flex-container2{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+}
 
 #left-zone {
     height: 50%;
@@ -462,6 +558,16 @@ hr {
     display: -ms-flexbox;
     display: flex;
     width: 100%;
+}
+#left-zone2 {
+    width: 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
 }
 
 #left-zone .list {
@@ -484,8 +590,37 @@ hr {
     box-sizing: border-box;
 }
 
+#left-zone2 .list2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    margin: auto;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .item input {
     display: none;
+}
+
+.label_testimonialM2-1 label{
+    display: block;
+    opacity: 0.5;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: relative;
 }
 
 label {
